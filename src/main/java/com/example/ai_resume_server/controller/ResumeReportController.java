@@ -50,7 +50,9 @@ public class ResumeReportController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body(Map.of("status", false, "message", "Email not registered."));
         }
-
+        if(description.isEmpty()){
+            return ResponseEntity.badRequest().body(Map.of("status",false,"message","Please provide job description"));
+        }
         String validationResult = validatorService.validate(file);
         if (!validationResult.equals("VALID")) {
             return ResponseEntity.badRequest().body(
