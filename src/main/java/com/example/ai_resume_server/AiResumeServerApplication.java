@@ -13,9 +13,9 @@ public class AiResumeServerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AiResumeServerApplication.class, args);
 	}
-	@GetMapping("/health")
+	@GetMapping("/")
 	public String health(){
-		return "Server running successfully 🚀🚀🚀";
+		return "AI Resume Server running successfully 🚀🚀🚀";
 	}
 
 }
