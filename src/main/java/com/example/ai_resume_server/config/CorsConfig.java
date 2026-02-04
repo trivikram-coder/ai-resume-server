@@ -11,8 +11,8 @@ public class CorsConfig implements WebMvcConfigurer {
                 .allowCredentials(true)
                 .allowedMethods("GET","POST","PUT","DELETE")
                 .allowedOrigins("http://localhost:5173",
-                        "http://localhost:63342/Ai-Resume-Analyzer/ai-resume-server/static/index.html?_ijt=fca4s748v865209lfmb70rhs6v&_ij_reload=RELOAD_ON_SAVE",
-                        "http://localhost:3000",
+                        "https://resume-intelligence-service.netlify.app",
+                        "http://localhost:5173",
                         "https://ris.vkstore.site"
                         )
                 .allowedHeaders("*");
