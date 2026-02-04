@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @SpringBootApplication
 @EnableCaching
-public class AiResumeServerApplication {
+public class 	AiResumeServerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AiResumeServerApplication.class, args);
