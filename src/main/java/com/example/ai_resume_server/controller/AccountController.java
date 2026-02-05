@@ -49,7 +49,7 @@ public class AccountController {
                 return ResponseEntity.badRequest().body(Map.of("status",false,"message","Email id is required"));
             }
             Account user=service.getUserByEmail(email);
-            return ResponseEntity.ok(Map.of("status",true,"message",user));
+            return ResponseEntity.ok(Map.of("status",true,"message","User fetched successfully","user",user));
         }
         catch(Exception e){
             return ResponseEntity.internalServerError().body(Map.of("status",false,"message",e.getMessage()==null?"Server is not responding":""));
