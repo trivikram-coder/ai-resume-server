@@ -1,0 +1,30 @@
+name: RIS APP
+on:
+  push:
+    - main
+    - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Action Checkout
+        uses: actions/checkout@v3
+      - name: Java Setup
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+      - name: Build JAR
+        run: mvn clean package -DskipTests
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{secrets.EC2_HOST}}
+          username: ubuntu
+          key: ${secrets.EC2_SSH_KEY}}
+          script: |
+            cd /ai-resume-server
+            git pull origin main
+            docker build -t resume-app .
+            docker stop resume-app || true
+            docker rm resume-app || true
+            docker run -p 8080:8080 --name resume-app resume-app
