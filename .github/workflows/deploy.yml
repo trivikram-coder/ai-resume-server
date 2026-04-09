@@ -1,8 +1,10 @@
 name: RIS APP
 on:
   push:
-    - main
-    - master
+    branches:
+      - main
+      - master
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,7 +14,8 @@ jobs:
       - name: Java Setup
         uses: actions/setup-java@v3
         with:
-          java-version: 17
+          java-version: '17'
+          distribution: 'temurin'
       - name: Build JAR
         run: mvn clean package -DskipTests
       - name: Deploy to EC2
@@ -20,7 +23,7 @@ jobs:
         with:
           host: ${{secrets.EC2_HOST}}
           username: ubuntu
-          key: ${secrets.EC2_SSH_KEY}}
+          key: ${{secrets.EC2_SSH_KEY}}
           script: |
             cd /ai-resume-server
             git pull origin main
