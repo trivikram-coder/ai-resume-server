@@ -25,9 +25,9 @@ jobs:
           username: ubuntu
           key: ${{secrets.EC2_SSH_KEY}}
           script: |
-            cd /ai-resume-server
+            cd /home/ubuntu/ai-resume-server
             git pull origin main
             docker build -t resume-app .
             docker stop resume-app || true
             docker rm resume-app || true
-            docker run -p 8080:8080 --name resume-app resume-app
+            docker run -d -p 8080:8080 --name resume-app resume-app
