@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface ResumeReportRepo extends JpaRepository<ResumeReport,Long> {
+public interface ResumeReportRepo extends JpaRepository<ResumeReport,UUID> {
     Optional<List<ResumeReport>> findByEmailOrderByIdDesc(String email);
     boolean existsById(Long id);
 }
