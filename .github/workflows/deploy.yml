@@ -30,4 +30,9 @@ jobs:
             docker build -t resume-app .
             docker stop resume-app || true
             docker rm resume-app || true
-            docker run -d -p 8080:8080 --name resume-app resume-app
+            docker run -d --name resume-app --restart always -p 8080:8080 \
+            -e API_URL=${{ secrets.API_URL }} \
+            -e DB_USERNAME=${{ secrets.DB_USERNAME }} \
+            -e DB_URL=${{ secrets.DB_URL }} \
+            -e DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
+            resume-app
