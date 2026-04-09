@@ -15,7 +15,7 @@ public class AiResumeServerApplication {
 	}
 	@GetMapping("/")
 	public String health(){
-		return "AI Resume Server running successfully 🚀🚀🚀";
+		return "Resume Intelligence Service API running successfully 🚀🚀🚀";
 	}
 
 }
